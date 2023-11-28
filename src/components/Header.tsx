@@ -6,10 +6,14 @@ export function Header() {
   return (
     <header className="bg-sky-950 flex h-20 w-full items-center justify-between px-5 max-md:flex-col max-md:h-36 max-md:justify-normal" >
       <div className="flex items-center max-md:flex-col max-md:mt-2">
-        <h1 className="mr-5 text-2xl ">Battle of Words</h1>
+        <h1 className="mx-5 text-3xl text-green-500 font-bold">Battle of Words</h1>
         <div className=" flex items-center h-10 bg-sky-800 rounded-lg px-5 max-md:w-5/6 max-md:mt-2">
-          <label className="">Nombre:</label>
-          <input className="mx-5 bg-sky-800 border-none outline-none max-md:w-60" type="text" />
+          <label id="username">Nombre:</label>
+          <input
+            className="mx-5 bg-sky-800 border-none outline-none max-md:w-60"
+            id="username"
+            type="text"
+          />
           {write ? <WriteIcon /> : <SaveIcon />}
         </div>
       </div>

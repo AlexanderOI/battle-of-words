@@ -1,15 +1,17 @@
-import { BrowserRouter } from "react-router-dom"
+import { BrowserRouter, Route, Routes } from "react-router-dom"
 import { Header } from "./components/Header"
-import { Games } from "./components/Games"
+import { Game } from "./components/Game"
 
 function App() {
   return (
     <BrowserRouter>
       <Header />
 
-      <div>
-        <Games />
-      </div>
+      <main>
+        <Routes>
+          <Route path="/" element={<Game />} />
+        </Routes>
+      </main>
     </BrowserRouter>
   )
 }
