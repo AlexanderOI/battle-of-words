@@ -1,15 +1,18 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom"
-import { Header } from "./components/Header"
-import { Game } from "./components/Game"
+import { Header } from "./components/game/Header"
+import { Game } from "./pages/Game"
+import { WordBattle } from "./pages/WordBattle"
+
 
 function App() {
   return (
     <BrowserRouter>
       <Header />
 
-      <main>
+      <main className="h-full">
         <Routes>
           <Route path="/" element={<Game />} />
+          <Route path="/room" element={<WordBattle />} />
         </Routes>
       </main>
     </BrowserRouter>

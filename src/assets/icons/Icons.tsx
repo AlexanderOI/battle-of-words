@@ -1,7 +1,7 @@
 
 export function LinkedinIcon() {
   return (
-    <svg className="w-10" fill="#ffffff" viewBox="0 0 32 32" version="1.1" xmlns="http://www.w3.org/2000/svg" stroke="#000">
+    <svg className="w-10" fill="#ffffff" viewBox="0 0 32 32" version="1.1" stroke="#000">
       <g id="SVGRepo_bgCarrier" strokeWidth="0"></g>
       <g id="SVGRepo_tracerCarrier" strokeLinecap="round" strokeLinejoin="round"></g>
       <g id="SVGRepo_iconCarrier">
@@ -14,7 +14,7 @@ export function LinkedinIcon() {
 
 export function GitHubIcon() {
   return (
-    <svg className="w-10" viewBox="0 0 20 20" version="1.1" xmlns="http://www.w3.org/2000/svg" fill="#ffffff">
+    <svg className="w-10" viewBox="0 0 20 20" version="1.1" fill="#ffffff">
       <g id="SVGRepo_bgCarrier" strokeWidth="0"></g>
       <g id="SVGRepo_tracerCarrier" strokeLinecap="round" strokeLinejoin="round"></g>
       <g id="SVGRepo_iconCarrier">
@@ -35,7 +35,7 @@ export function GitHubIcon() {
 
 export function RepositoryIcon() {
   return (
-    <svg className="w-10" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="rgb(255, 255, 255)">
+    <svg className="w-10" viewBox="0 0 24 24" fill="rgb(255, 255, 255)">
       <g id="SVGRepo_bgCarrier" strokeWidth="0"></g>
       <g id="SVGRepo_tracerCarrier" strokeLinecap="round" strokeLinejoin="round"></g>
       <g id="SVGRepo_iconCarrier">
@@ -50,9 +50,9 @@ export function RepositoryIcon() {
 
 export function GmailIcon() {
   return (
-    <svg className="w-10" fill="#ffffff" height="200px" width="200px" version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 216 216" xmlSpace="preserve">
+    <svg className="w-10" fill="#ffffff" height="200px" width="200px" version="1.1" id="Capa_1" viewBox="0 0 216 216" xmlSpace="preserve">
       <g id="SVGRepo_bgCarrier" strokeWidth="0"></g>
-      <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+      <g id="SVGRepo_tracerCarrier" strokeLinecap="round" strokeLinejoin="round"></g>
       <g id="SVGRepo_iconCarrier">
         <path d="M108,0C48.353,0,0,48.353,0,108s48.353,108,108,108s108-48.353,108-108S167.647,0,108,0z M156.657,60L107.96,98.498 L57.679,60H156.657z M161.667,156h-109V76.259l50.244,38.11c1.347,1.03,3.34,1.545,4.947,1.545c1.645,0,3.073-0.54,4.435-1.616 l49.374-39.276V156z"></path>
       </g>
@@ -62,7 +62,7 @@ export function GmailIcon() {
 
 export function WriteIcon() {
   return (
-    <svg className="cursor-pointer" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="-0.5 -0.5 24 24">
+    <svg className="cursor-pointer" width="24" height="24" viewBox="-0.5 -0.5 24 24">
       <path fill="currentColor" d="m21.289.98l.59.59c.813.814.69 2.257-.277 3.223L9.435 16.96l-3.942 1.442c-.495.182-.977-.054-1.075-.525a.928.928 0 0 1 .045-.51l1.47-3.976L18.066 1.257c.967-.966 2.41-1.09 3.223-.276zM8.904 2.19a1 1 0 1 1 0 2h-4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-4a1 1 0 0 1 2 0v4a4 4 0 0 1-4 4h-12a4 4 0 0 1-4-4v-12a4 4 0 0 1 4-4h4z" />
     </svg>
   )
@@ -70,7 +70,7 @@ export function WriteIcon() {
 
 export function SaveIcon() {
   return (
-    <svg className="cursor-pointer" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+    <svg className="cursor-pointer" width="24" height="24" viewBox="0 0 24 24">
       <path fill="currentColor" d="M21 7v12q0 .825-.587 1.413T19 21H5q-.825 0-1.412-.587T3 19V5q0-.825.588-1.412T5 3h12zm-9 11q1.25 0 2.125-.875T15 15q0-1.25-.875-2.125T12 12q-1.25 0-2.125.875T9 15q0 1.25.875 2.125T12 18m-6-8h9V6H6z" />
     </svg>
   )
@@ -78,7 +78,7 @@ export function SaveIcon() {
 
 export function PlublicIcon() {
   return (
-    <svg width="48pt" height="48pt" viewBox="0 0 16.933334 16.933333" xmlns="http://www.w3.org/2000/svg">
+    <svg width="48pt" height="48pt" viewBox="0 0 16.933334 16.933333">
       <g fill="#46a05d">
         <path d="M72.39 328.5918c-3.358 0-6.086 2.7262-6.086 6.08398 0 3.35775 2.7282 6.08594 6.086 6.08594 3.358 0 6.084-2.72819 6.084-6.08594 0-3.35774-2.7262-6.08398-6.084-6.08398z" />
         <path d="M72.39 328.5918c-1.8467 0-3.5026 0.82468-4.6194 2.12545 0.7637-0.34545 1.6108-0.53795 2.5027-0.53795 3.3577 0 6.0844 2.72612 6.0844 6.08386 0 1.51228-0.5535 2.8969-1.4681 3.96204 2.1128-0.95484 3.5848-3.0823 3.5848-5.54954 0-3.35774-2.7266-6.08386-6.0844-6.08386z" />
@@ -89,6 +89,32 @@ export function PlublicIcon() {
         <path d="M77.017519 334.03185c-0.344578 0.003-0.69079 0.10834-0.967899 0.31579 0.56623 1.68149 0.344403 3.60706-0.59849 5.11127-0.0991 0.13272-0.198467 0.25725-0.02601 0.36337 0.11176 0.19413 0.291728-0.10458 0.427895-0.1436 1.38994-0.95743 2.350605-2.5128 2.567533-4.18832 0.04123-0.31272 0.05942-0.62852 0.0527-0.9439-0.408371-0.31658-0.936442-0.51661-1.455732-0.51461z" />
         <path d="m 70.953809,333.56573 c -0.130288,-9.1e-4 -0.240053,0.005 -0.318844,0.005 h -0.578776 c 0.26121,0.0138 0.574165,0.0633 0.871781,0.2186 0.52605,0.27441 0.953429,0.90438 0.953429,2.04897 a 0.26460995,0.26460995 0 0 0 0,5.1e-4 0.26460995,0.26460995 0 0 0 0,5.2e-4 0.26460995,0.26460995 0 0 0 0,5.2e-4 0.26460995,0.26460995 0 0 0 0,5.1e-4 0.26460995,0.26460995 0 0 0 0,5.2e-4 0.26460995,0.26460995 0 0 0 0,5.1e-4 0.26460995,0.26460995 0 0 0 0,5.2e-4 0.26460995,0.26460995 0 0 0 0,5.2e-4 c -0.0065,0.44762 -0.265134,0.73725 -0.429948,0.97255 -0.164735,0.23521 -0.270245,0.40271 -0.195337,0.77876 v 5.2e-4 c 0.06408,0.28306 0.02959,0.61062 -0.140559,0.90434 -0.149241,0.25761 -0.411338,0.47775 -0.771528,0.59531 0.287994,0.095 0.593757,0.12344 0.894001,0.045 0.445299,-0.0987 0.764804,-0.345 0.93586,-0.64027 0.170153,-0.29372 0.204639,-0.62128 0.14056,-0.90434 v -5.2e-4 c -0.07491,-0.37605 0.0306,-0.54355 0.195336,-0.77876 0.164815,-0.2353 0.423463,-0.52493 0.429948,-0.97255 a 0.26460995,0.26460995 0 0 0 0,-5.2e-4 0.26460995,0.26460995 0 0 0 0,-5.2e-4 0.26460995,0.26460995 0 0 0 0,-5.1e-4 0.26460995,0.26460995 0 0 0 0,-5.2e-4 0.26460995,0.26460995 0 0 0 0,-5.1e-4 0.26460995,0.26460995 0 0 0 0,-5.2e-4 0.26460995,0.26460995 0 0 0 0,-5.2e-4 0.26460995,0.26460995 0 0 0 0,-5.1e-4 c 0,-1.14459 -0.427379,-1.77456 -0.953428,-2.04897 -0.361662,-0.18865 -0.745866,-0.22127 -1.032495,-0.22325 z" />
       </g>
+    </svg>
+  )
+}
+
+export function SendIcon() {
+  return (
+    <svg className=" fill-gray-900 cursor-pointer" width="40" height="40" viewBox="0 0 24 24">
+      <path d="M3 20v-6l8-2l-8-2V4l19 8l-19 8Z" />
+    </svg>
+  )
+}
+
+export function PersonIcon() {
+  return (
+    <svg className="flex fill-slate-400 mt-1 w-1/12 h-4" viewBox="0 0 12 12">
+      <path d="M6 1a2 2 0 1 0 0 4a2 2 0 0 0 0-4Zm2.5 5h-5A1.5 1.5 0 0 0 2 7.5c0 1.116.459 2.01 1.212 2.615C3.953 10.71 4.947 11 6 11c1.053 0 2.047-.29 2.788-.885C9.54 9.51 10 8.616 10 7.5A1.5 1.5 0 0 0 8.5 6Z" />
+    </svg>
+  )
+}
+
+export function FaceIcon() {
+  return (
+    <svg width="60" height="60" viewBox="0 0 24 24">
+      <path fill="currentColor" d="M12 2C6.486 2 2 6.486 2 12s4.486 10 10 10s10-4.486 10-10S17.514 2 12 2zm0 18c-4.411 0-8-3.589-8-8c0-1.168.258-2.275.709-3.276c.154.09.308.182.456.276c.396.25.791.5 1.286.688c.494.187 1.088.312 1.879.312c.792 0 1.386-.125 1.881-.313s.891-.437 1.287-.687s.792-.5 1.287-.688c.494-.187 1.088-.312 1.88-.312s1.386.125 1.88.313c.495.187.891.437 1.287.687s.792.5 1.287.688c.178.067.374.122.581.171c.191.682.3 1.398.3 2.141c0 4.411-3.589 8-8 8z" />
+      <circle cx="8.5" cy="12.5" r="1.5" fill="currentColor" />
+      <circle cx="15.5" cy="12.5" r="1.5" fill="currentColor" />
     </svg>
   )
 }

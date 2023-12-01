@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { gameModes } from "../constants/GameModes";
+import { gameModes } from "../../constants/GameModes";
 
 export function Modes() {
   const [active, setActive] = useState<number>();

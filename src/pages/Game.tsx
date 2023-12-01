@@ -1,6 +1,6 @@
-import { FormRoom } from "./FormRoom";
-import { Modes } from "./Modes";
-import { Rules } from "./Rules";
+import { FormRoom } from "../components/game/FormRoom";
+import { Modes } from "../components/game/Modes";
+import { Rules } from "../components/game/Rules";
 
 export function Game() {
 

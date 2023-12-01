@@ -7,6 +7,17 @@ export default {
   theme: {
     extend: {},
   },
-  plugins: [],
+  plugins: [
+    // Otras extensiones de plugins...
+    ({ addUtilities }) => {
+      const utilities = {
+        '.vertical-lr': {
+          writingMode: 'vertical-lr',
+        },
+      };
+
+      addUtilities(utilities, ['responsive', 'hover']);
+    },
+  ],
 }
 
