@@ -1,26 +1,40 @@
 import { useEffect, useState } from "react"
 import { GitHubIcon, LinkedinIcon, SaveIcon, WriteIcon } from "../../assets/icons/Icons"
+import { useRoomContext } from "../../context/RoomDataContext"
 
 export function Header() {
+  const { formRoomData, setFormRoomData } = useRoomContext()
+
   const [inputDisabled, setInputDisabled] = useState(true)
-  const [username, setUsername] = useState('')
+
+  const handleChangeUsername = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setFormRoomData(prev => ({
+      ...prev,
+      username: event.target.value
+    }))
+  }
 
   const handleSubmitUsername = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault()
-
     setInputDisabled(prev => !prev)
-
-    localStorage.setItem('username', JSON.stringify(username))
+    localStorage.setItem('username', JSON.stringify(formRoomData.username))
   }
 
   useEffect(() => {
     try {
       const usernameSaved = JSON.parse(localStorage.getItem('username') ?? '')
       if (usernameSaved) {
-        setUsername(usernameSaved)
+        setFormRoomData(prev => ({
+          ...prev,
+          username: usernameSaved
+        }))
       }
     } catch (error) {
-      setUsername('')
+      setFormRoomData(prev => ({
+        ...prev,
+        username: 'usernameSaved'
+      }))
+
     }
   }, [])
 
@@ -46,8 +60,8 @@ export function Header() {
               id="usernameID"
               type="text"
               disabled={inputDisabled}
-              value={username}
-              onChange={(event) => setUsername(event.target.value)}
+              value={formRoomData.username}
+              onChange={handleChangeUsername}
             />
           </label>
           <button>

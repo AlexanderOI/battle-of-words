@@ -2,14 +2,16 @@ import { useEffect, useState } from "react"
 
 import { FormRoom } from '../../types'
 import { InputRoomForm } from "../common/InputRoomForm"
+import { useRoomContext } from "../../context/RoomDataContext"
 
-export function FormRoom({ formRoomData, setFormRoomData, handleClickCreateRoom, handleClickPlay }: FormRoom) {
+export function FormRoom({ handleClickCreateRoom, handleClickPlay }: FormRoom) {
+  const { formRoomData, setFormRoomData } = useRoomContext()
+
   const [isPublicActive, setIsPublicActive] = useState(true)
   const [isPlayActive, setisPlayActive] = useState(false)
 
-
   const handlePublicationButtonClick = (publication: string) => {
-    setIsPublicActive(prev => !prev)
+    setIsPublicActive(publication === 'public' ? true : false)
     setFormRoomData(prevData => ({ ...prevData, roomtype: publication }))
   }
 
@@ -23,14 +25,15 @@ export function FormRoom({ formRoomData, setFormRoomData, handleClickCreateRoom,
   }
 
   useEffect(() => {
-    const { code, roomname, gamemode, roomtype } = formRoomData
-    if (code && roomname && gamemode && roomtype) {
+    const { code, roomname, gamemode, roomtype, username } = formRoomData
+    const notAvailable = 'Este modo no esta disponible'
+
+    if (code && roomname && gamemode && gamemode != notAvailable && roomtype && username) {
       setisPlayActive(true)
     } else {
       setisPlayActive(false)
 
     }
-
   }, [formRoomData])
 
   return (
@@ -49,7 +52,7 @@ export function FormRoom({ formRoomData, setFormRoomData, handleClickCreateRoom,
           />
 
           <InputRoomForm
-            label="mode"
+            label="Modo"
             name="gamemode"
             placeholder="Selecciona un modo de juego"
             disabled={true}
@@ -86,7 +89,7 @@ export function FormRoom({ formRoomData, setFormRoomData, handleClickCreateRoom,
             Crear sala
           </button>
           <button
-            className={`${isPlayActive ? 'bg-blue-500 cursor-pointer' : 'bg-slate-600 cursor-default'} px-4 py-2 rounded-md m-2 cursor-pointer`}
+            className={`${isPlayActive ? 'bg-blue-500 cursor-pointer' : 'bg-slate-600 cursor-default'} px-4 py-2 rounded-md m-2`}
             disabled={!isPlayActive}
             onClick={handleClickPlay}
           >

@@ -1,16 +1,19 @@
 import { useState } from "react"
 import { gameMode } from "../../constants/GameModes"
-import { SetFormRoomData } from "../../types"
 import { GameModeList } from "../common/GameModeList"
+import { useRoomContext } from "../../context/RoomDataContext"
 
-export function Modes({ setFormRoomData }: SetFormRoomData) {
+export function Modes() {
+  const { setFormRoomData } = useRoomContext()
+
   const [active, setActive] = useState<number>(-1)
 
   const handleClickGameMode = (index: number, name: string) => {
+    const newGamemode = name === 'Proximamente...' ? 'Este modo no esta disponible' : name
     setActive(index)
     setFormRoomData(prev => ({
       ...prev,
-      gamemode: name
+      gamemode: newGamemode
     }))
   }
 

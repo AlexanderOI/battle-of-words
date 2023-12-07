@@ -1,18 +1,13 @@
 //types Game page
 export type FormRoomData = {
+  username: string
   roomname: string
   code: string
   gamemode: string
   roomtype: string
 }
 
-export type SetFormRoomData = {
-  setFormRoomData: React.Dispatch<React.SetStateAction<FormRoomData>>
-}
-
 export type FormRoom = {
-  formRoomData: FormRoomData
-  setFormRoomData: React.Dispatch<React.SetStateAction<FormRoomData>>
   handleClickCreateRoom: () => void
   handleClickPlay: () => void
 }
@@ -36,6 +31,7 @@ export type GameModeListProps = {
   active: number
   handleClickGameMode: (index: number, name: string) => void
 }
+
 
 //Contants
 export type GameMode = {
