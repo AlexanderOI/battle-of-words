@@ -19,7 +19,7 @@ export function Modes() {
 
   return (
     <section>
-      <h2 className="text-center text-xl mb-5">Modos de juego</h2>
+      <h2 className="text-center text-3xl mb-5 font-bold text-indigo-400">Modos de juego</h2>
       <GameModeList
         gameMode={gameMode}
         active={active}

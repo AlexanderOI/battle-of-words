@@ -23,8 +23,8 @@ export function Game() {
   }
 
   return (
-    <main className="flex max-md:flex-col">
-      <div className="bg-sky-950 w-4/6 m-5 p-5 rounded-2xl max-md:w-full max-md:m-0">
+    <main className="flex max-md:flex-col h-[710px] max-md:h-ful">
+      <div className="bg-sky-950 w-4/6 m-5 p-5 rounded-2xl l max-md:w-full max-md:m-0">
         <Modes />
         <FormRoom
           handleClickCreateRoom={handleClickCreateRoom}

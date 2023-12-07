@@ -38,7 +38,7 @@ export function FormRoom({ handleClickCreateRoom, handleClickPlay }: FormRoom) {
 
   return (
     <section>
-      <h2 className="text-center text-xl mt-5">Configúra tu sala</h2>
+      <h2 className="text-center text-3xl font-bold text-indigo-400 mt-3">Crea tu sala</h2>
 
       <div className="flex w-full max-md:flex-col">
         <div className="flex flex-col w-1/2 px-5 max-md:w-full my-3 max-md:p-0">

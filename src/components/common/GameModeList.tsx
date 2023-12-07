@@ -7,8 +7,8 @@ export function GameModeList({ gameMode, active, handleClickGameMode }: GameMode
         <li
           key={index}
           className={
-            `${active === index ? 'bg-slate-600' : 'bg-sky-900'}
-            ${active === index && index != 0 ? 'bg-red-400' : 'bg-sky-900'} 
+            ` ${active === index ? 'bg-slate-600' : 'bg-sky-900'}
+              ${active === index && index != 0 ? 'bg-red-600' : 'bg-sky-900'} 
               ${index === 0 ? 'ml-5' : ''} 
               inline-block w-52 items-center my-5 mr-5 rounded-2xl max-md:w-40 cursor-pointer`
           }

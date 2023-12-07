@@ -38,3 +38,8 @@ export type GameMode = {
   name: string
   image: string
 }[]
+
+export type RulesData = {
+  title: string;
+  description: string;
+}[]
