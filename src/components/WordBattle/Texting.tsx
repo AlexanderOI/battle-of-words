@@ -1,4 +1,4 @@
-import { PersonIcon, SendIcon } from "../../assets/icons/Icons";
+import { PersonIcon, SendIcon } from "../../assets/icons/Icons"
 
 export function Texting() {
   return (
@@ -45,5 +45,5 @@ export function Texting() {
         </button>
       </form>
     </div>
-  );
+  )
 }

@@ -118,3 +118,22 @@ export function FaceIcon() {
     </svg>
   )
 }
+
+export function CopyIcon() {
+  return (
+    <svg width="25" height="25" viewBox="0 0 512 512">
+      <path fill="#0c4a6e" d="M408 480H184a72 72 0 0 1-72-72V184a72 72 0 0 1 72-72h224a72 72 0 0 1 72 72v224a72 72 0 0 1-72 72Z" />
+      <path fill="#0c4a6e" d="M160 80h235.88A72.12 72.12 0 0 0 328 32H104a72 72 0 0 0-72 72v224a72.12 72.12 0 0 0 48 67.88V160a80 80 0 0 1 80-80Z" />
+    </svg>
+  )
+}
+
+export function ConfirmIcon() {
+  return (
+    <svg width="24" height="24" viewBox="0 0 24 24">
+      <path fill="none" stroke="#0c4a6e" strokeDasharray="24" strokeDashoffset="24" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 11L11 17L21 7">
+        <animate fill="freeze" attributeName="stroke-dashoffset" dur="0.4s" values="24;0" />
+      </path>
+    </svg>
+  )
+}

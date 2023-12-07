@@ -1,6 +1,6 @@
-import { GameRoom } from "../components/WordBattle/GameRoom";
-import { Texting } from "../components/WordBattle/Texting";
-import { Rules } from "../components/WordBattle/Rules";
+import { GameRoom } from "../components/WordBattle/GameRoom"
+import { Texting } from "../components/WordBattle/Texting"
+import { Rules } from "../components/WordBattle/Rules"
 
 export function WordBattle() {
   return (

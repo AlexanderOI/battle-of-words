@@ -1,14 +1,14 @@
-import { useState } from "react";
+import { useState } from "react"
 
 export function Rules() {
-  const [expandRules, setExpandRules] = useState("-19.4rem");
+  const [expandRules, setExpandRules] = useState("-19.4rem")
 
   const handleClickExpandRules = () => {
     setExpandRules((prev) => {
-      const newValue = prev.length > 5 ? "0rem" : "-19.4rem";
-      return newValue;
-    });
-  };
+      const newValue = prev.length > 5 ? "0rem" : "-19.4rem"
+      return newValue
+    })
+  }
 
   return (
     <section
@@ -35,5 +35,5 @@ export function Rules() {
         </button>
       </div>
     </section>
-  );
+  )
 }

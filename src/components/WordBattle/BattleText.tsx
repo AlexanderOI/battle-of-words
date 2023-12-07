@@ -1,4 +1,4 @@
-import { SendIcon } from "../../assets/icons/Icons";
+import { SendIcon } from "../../assets/icons/Icons"
 
 export function BattleText() {
   return (

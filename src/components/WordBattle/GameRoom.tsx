@@ -1,5 +1,5 @@
 import { FaceIcon } from '../../assets/icons/Icons'
-import { BattleText } from './BattleText';
+import { BattleText } from './BattleText'
 
 export function GameRoom() {
   const jugador1Vida = 80
@@ -16,8 +16,8 @@ export function GameRoom() {
               className="h-full bg-green-600"
               style={{ width: `${jugador1Vida}%` }}
             ></div>
-            <span className='h-5'></span>
           </div>
+          <span className='h-5'> </span>
         </div>
 
         <div className="flex flex-col items-center w-[200px]">
@@ -29,7 +29,7 @@ export function GameRoom() {
               style={{ width: `${jugador2Vida}%` }}
             ></div>
           </div>
-          <span className='h-5'></span>
+          <span className='h-5'> </span>
         </div>
       </div>
 
@@ -37,5 +37,5 @@ export function GameRoom() {
         <BattleText />
       </div>
     </div>
-  );
+  )
 }
