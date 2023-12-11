@@ -13,6 +13,20 @@ export type FormRoom = {
 }
 
 
+//types WordBattle page
+export type Player = {
+  name: string
+  lifePoints: number
+  gameTurn: boolean
+  attack: string
+}
+
+export type PayerData = {
+  player1: Player
+  player2: Player
+}
+
+
 //type InputRoomForm component
 export type InputRoomFormProps = {
   label: string
@@ -31,7 +45,6 @@ export type GameModeListProps = {
   active: number
   handleClickGameMode: (index: number, name: string) => void
 }
-
 
 //Contants
 export type GameMode = {

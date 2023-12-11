@@ -4,10 +4,12 @@ import { Rules } from "../components/game/Rules"
 import { codeGenerator } from "../utils/codeGenerator"
 import { useNavigate } from "react-router-dom"
 import { useRoomContext } from "../context/RoomDataContext"
+import { useSocket } from "../context/SocketContext"
 
 export function Game() {
   const navigate = useNavigate()
 
+  const socket = useSocket()
   const { formRoomData, setFormRoomData } = useRoomContext()
 
   const handleClickCreateRoom = () => {
@@ -16,11 +18,15 @@ export function Game() {
       ...prev,
       code: newCode
     }))
+
+    socket.emit('createRoom', newCode)
   }
 
   const handleClickPlay = () => {
     navigate(`/room/${formRoomData.code}`)
   }
+
+  
 
   return (
     <main className="flex max-md:flex-col h-[710px] max-md:h-ful">

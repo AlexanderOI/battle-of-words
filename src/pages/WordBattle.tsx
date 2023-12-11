@@ -1,13 +1,16 @@
 import { GameRoom } from "../components/WordBattle/GameRoom"
-import { Texting } from "../components/WordBattle/Texting"
+import { Chat } from "../components/WordBattle/Chat"
 import { Rules } from "../components/WordBattle/Rules"
+import { PlayerProvider } from "../context/PlayerDataContext"
 
 export function WordBattle() {
   return (
-    <div className="flex h-full relative">
-      <Rules />
-      <GameRoom />
-      <Texting />
-    </div>
+    <PlayerProvider>
+      <div className="flex h-full relative">
+        <Rules />
+        <GameRoom />
+        <Chat />
+      </div>
+    </PlayerProvider>
   )
 }

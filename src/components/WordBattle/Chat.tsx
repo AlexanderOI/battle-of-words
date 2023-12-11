@@ -1,9 +1,9 @@
 import { PersonIcon, SendIcon } from "../../assets/icons/Icons"
 
-export function Texting() {
+export function Chat() {
   return (
     <div className="flex flex-col bg-sky-950 w-1/4 m-5 p-5 h-full max-md:w-full max-md:m-0 rounded-2xl">
-      <h2 className="text-center text-xl mb-5">Chat</h2>
+      <h2 className="text-center text-3xl mb-4 font-bold text-indigo-400">Chat</h2>
       <div className="flex flex-col w-full h-full bg-neutral-800 mb-3 p-5 rounded-2xl overflow-y-auto">
         <div className="flex items-start mb-3">
           <PersonIcon />
