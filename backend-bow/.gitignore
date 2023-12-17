@@ -1,0 +1,7 @@
+node_modules
+controllers
+models
+routes
+test.js
+# Keep environment variables out of version control
+.env
