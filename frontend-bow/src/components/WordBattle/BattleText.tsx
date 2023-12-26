@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react"
+import { useState } from "react"
 import { SendIcon } from "../../assets/icons/Icons"
 import { useSocket } from "../../context/SocketContext"
 
@@ -7,22 +7,23 @@ export function BattleText() {
 
   const [currentID, setCurrentID] = useState('')
 
-  const [attackWord] = useState({
+  const [attackWord, setAttackWord] = useState({
     player1: '',
     player2: ''
   })
 
-  const handleChangeAttackWord = (event: React.FormEvent<HTMLInputElement>) => {
-
+  const handleChangeAttackWord = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setAttackWord(prev => ({
+      ...prev,
+      [currentID != socket.id ? 'player1' : 'player2']: event.target.value
+    }))
   }
 
-  useEffect(() => {
-    socket.on('sendSocketId', (socketId: string) => {
-      console.log('a:', socketId, 'b:', socket.id, socketId === socket.id)
-      setCurrentID(socketId)
-    })
+  socket.on('sendSocketId', (socketId: string) => {
+    console.log('a:', socketId, 'b:', socket.id, socketId === socket.id)
+    setCurrentID(socketId)
+  })
 
-  }, [socket])
 
 
   return (

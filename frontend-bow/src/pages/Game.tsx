@@ -6,18 +6,19 @@ import { useNavigate } from "react-router-dom"
 import { useRoomContext } from "../context/RoomDataContext"
 import { useSocket } from "../context/SocketContext"
 import { useEffect, useState } from "react"
+import { usePlayerContext } from "../context/PlayerDataContext"
 
 export function Game() {
   const navigate = useNavigate()
 
   const socket = useSocket()
+  const { setPlayerData } = usePlayerContext()
   const { formRoomData, setFormRoomData } = useRoomContext()
 
   const [player, setPlayer] = useState({
     name: '',
     lifePoints: 300,
     attack: '',
-    isCurrentTurn: true,
   })
 
   const handleClickCreateRoom = () => {
@@ -25,6 +26,11 @@ export function Game() {
     setFormRoomData(prev => ({
       ...prev,
       code: newCode
+    }))
+
+    setPlayerData(prev => ({
+      ...prev,
+      ['player1']: player
     }))
 
     socket.emit('createRoom', newCode, player)

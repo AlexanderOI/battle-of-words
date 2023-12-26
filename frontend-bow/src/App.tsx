@@ -4,6 +4,7 @@ import { Header } from "./components/Header/Header"
 import { Game } from "./pages/Game"
 import { WordBattle } from "./pages/WordBattle"
 import { RoomProvider } from "./context/RoomDataContext"
+import { PlayerProvider } from "./context/PlayerDataContext"
 
 function App() {
 
@@ -13,10 +14,13 @@ function App() {
         <Header />
 
         <main className="h-full">
-          <Routes>
-            <Route path="/" element={<Game />} />
-            <Route path="/room/:roomkey" element={<WordBattle />} />
-          </Routes>
+          <PlayerProvider>
+            <Routes>
+              <Route path="/" element={<Game />} />
+              <Route path="/room/:roomkey" element={<WordBattle />} />
+            </Routes>
+
+          </PlayerProvider>
         </main>
       </RoomProvider>
     </BrowserRouter>

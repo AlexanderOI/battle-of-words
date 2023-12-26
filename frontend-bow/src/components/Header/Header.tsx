@@ -24,7 +24,6 @@ export function Header() {
     name: '',
     lifePoints: 300,
     attack: '',
-    isCurrentTurn: false,
   })
 
   const isRoom = window.location.pathname
