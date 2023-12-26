@@ -1,3 +1,5 @@
+import util from 'node:util';
+
 import { Server } from "socket.io"
 
 interface Room {
@@ -24,9 +26,9 @@ export const gameController = (io: Server): void => {
       rooms[roomCode] = { players: { [socket.id]: playerData } }
       socket.join(roomCode)
 
-      // io.to(roomCode).emit('updatePlayers', rooms[roomCode].players)
+      io.to(roomCode).emit('dataPlayers', rooms[roomCode].players)
 
-      console.log(rooms)
+      console.log(util.inspect(rooms, { depth: null }))
     })
 
     socket.on('joinRoom', (roomCode: string, playerData: PlayerData) => {
@@ -34,16 +36,16 @@ export const gameController = (io: Server): void => {
         rooms[roomCode].players[socket.id] = playerData
         socket.join(roomCode)
 
-        // io.to(roomCode).emit('updatePlayers', rooms[roomCode].players)
         socket.emit('joinRoomError', { error: 'La sala existe' })
 
         io.to(roomCode).emit('sendSocketId', socket.id)
+        io.to(roomCode).emit('dataPlayers', rooms[roomCode].players)
+
       } else {
         socket.emit('joinRoomError', { error: 'La sala no existe' })
       }
 
-
-      console.log(rooms)
+      console.log(util.inspect(rooms, { depth: null }))
     })
 
     socket.on('attack', (dataPlayer: PlayerData) => {
@@ -51,7 +53,7 @@ export const gameController = (io: Server): void => {
 
       if (rooms[roomCode] && rooms[roomCode].players[socket.id]) {
         rooms[roomCode].players[socket.id] = dataPlayer
-        io.to(roomCode).emit('updatePlayers', rooms[roomCode].players)
+        io.to(roomCode).emit('dataPlayers', rooms[roomCode].players)
       }
     })
 
