@@ -4,12 +4,10 @@ import { Rules } from "../components/WordBattle/Rules"
 
 export function WordBattle() {
   return (
-    <>
-      <div className="flex h-full relative">
-        <Rules />
-        <GameRoom />
-        <Chat />
-      </div>
-    </>
+    <div className="flex h-full relative">
+      <Rules />
+      <GameRoom />
+      <Chat />
+    </div>
   )
 }

@@ -7,12 +7,14 @@ import { useRoomContext } from "../context/RoomDataContext"
 import { useSocket } from "../context/SocketContext"
 import { useEffect, useState } from "react"
 import { usePlayerContext } from "../context/PlayerDataContext"
+import { useRoomCodeContext } from "../context/RoomCodeContext"
 
 export function Game() {
   const navigate = useNavigate()
 
   const socket = useSocket()
   const { setPlayerData } = usePlayerContext()
+  const { setRoomCode } = useRoomCodeContext()
   const { formRoomData, setFormRoomData } = useRoomContext()
 
   const [player, setPlayer] = useState({
@@ -33,6 +35,7 @@ export function Game() {
       ['player1']: player
     }))
 
+    setRoomCode(newCode)
     socket.emit('createRoom', newCode, player)
   }
 

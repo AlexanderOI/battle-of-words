@@ -5,11 +5,13 @@ import { useNavigate } from "react-router-dom"
 import { useSocket } from "../../context/SocketContext"
 import { UsernameForm } from "./UsernameForm"
 import { RoomForm } from "./RoomForm"
+import { useRoomCodeContext } from "../../context/RoomCodeContext"
 
 export function Header() {
   const navigate = useNavigate()
   const socket = useSocket()
   const { formRoomData, setFormRoomData } = useRoomContext()
+  const { setRoomCode } = useRoomCodeContext()
 
   const inputUsernameRef = useRef<HTMLInputElement | null>(null)
 
@@ -51,7 +53,7 @@ export function Header() {
 
   const handleSubmitEnterCode = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault()
-
+    setRoomCode(enterCode)
     socket.emit("joinRoom", enterCode, player)
   }
 
@@ -115,7 +117,6 @@ export function Header() {
       setIsVisible(false)
     }
   })
-
 
   return (
     <header className="bg-sky-950 flex h-20 w-full items-center justify-between px-5 max-md:flex-col max-md:h-36 max-md:justify-normal">

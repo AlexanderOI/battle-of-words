@@ -14,7 +14,7 @@ export function Rules() {
 
   return (
     <section
-      className={`flex justify-center items-center absolute h-full m-5 transition-transform ease-in-out duration-500`}
+      className={`flex justify-center items-center absolute h-full m-5 transition-transform ease-in-out duration-500 z-50`}
       style={{
         transform: `translateX(${expandRules})`,
         width: "25rem",

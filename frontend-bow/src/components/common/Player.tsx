@@ -2,11 +2,13 @@ import { FaceIcon } from "../../assets/icons/Icons"
 
 type PlayerProps = {
   name: string
-  lifePercentage: number
+  lifePoints: number
   word: string
 }
 
-export function Player({ name, lifePercentage, word }: PlayerProps) {
+export function Player({ name, lifePoints, word }: PlayerProps) {
+  const lifePercentage = (lifePoints / 300) * 100
+
   return (
     <div className="flex flex-col items-center w-[200px]">
       <FaceIcon />
