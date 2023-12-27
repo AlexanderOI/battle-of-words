@@ -1,12 +1,15 @@
-import util from 'node:util';
+import util from 'node:util'
 
 import { Server } from "socket.io"
+import { ReadJSON } from '../utils/readJSON'
+import { prisma } from '../service/db'
+import { generateRandomWord } from '../utils/randomWord'
 
 interface Room {
-  players: { [socketId: string]: PlayerData }
+  players: { [socketId: string]: Player }
 }
 
-interface PlayerData {
+interface Player {
   name: string
   lifePoints: number
   attack: string
@@ -16,13 +19,21 @@ interface Rooms {
   [key: string]: Room
 }
 
+interface PlayerData {
+  player1: Player
+  player2: Player
+}
+
 const rooms: Rooms = {}
 
-export const gameController = (io: Server): void => {
-  io.on('connection', (socket) => {
+export const gameController = async (io: Server): Promise<void> => {
+  const wordFragmentsFilePath = 'src/json/wordFragments.json'
+  const wordFragments = await ReadJSON(wordFragmentsFilePath)
+
+  io.on('connection', async (socket) => {
     console.log('a user has connected')
 
-    socket.on('createRoom', (roomCode: string, playerData: PlayerData) => {
+    socket.on('createRoom', (roomCode: string, playerData: Player) => {
       rooms[roomCode] = { players: { [socket.id]: playerData } }
       socket.join(roomCode)
 
@@ -31,7 +42,7 @@ export const gameController = (io: Server): void => {
       console.log(util.inspect(rooms, { depth: null }))
     })
 
-    socket.on('joinRoom', (roomCode: string, playerData: PlayerData) => {
+    socket.on('joinRoom', (roomCode: string, playerData: Player) => {
       if (rooms[roomCode]) {
         rooms[roomCode].players[socket.id] = playerData
         socket.join(roomCode)
@@ -48,14 +59,54 @@ export const gameController = (io: Server): void => {
       console.log(util.inspect(rooms, { depth: null }))
     })
 
-    socket.on('attack', (dataPlayer: PlayerData) => {
-      const roomCode = Object.keys(socket.rooms)[1]
+    socket.on('startGame', (roomCode: string, start: boolean) => {
+      const randomWord = generateRandomWord(wordFragments)
 
-      if (rooms[roomCode] && rooms[roomCode].players[socket.id]) {
-        rooms[roomCode].players[socket.id] = dataPlayer
-        io.to(roomCode).emit('dataPlayers', rooms[roomCode].players)
-      }
+      io.to(roomCode).emit('setCurrentWord', randomWord)
+      io.to(roomCode).emit('startGame', start)
     })
 
+    socket.on('attackWrite', (roomCode: string, playerData: PlayerData) => {
+      io.to(roomCode).emit('wordWrite', playerData)
+    })
+
+    socket.on('attack', async (roomCode: string, currentWord: string, attackWord: string) => {
+      const wordFragmentExist = attackWord.includes(currentWord)
+      console.log(wordFragmentExist)
+
+
+      const updatePlayerLifePoints = async (playerId: string, points: number) => {
+        const playerData = rooms[roomCode].players[playerId]
+        const newPlayerData = { ...playerData, lifePoints: playerData.lifePoints - points }
+        rooms[roomCode].players[playerId] = newPlayerData
+      }
+
+      if (wordFragmentExist) {
+        const wordExist = await prisma.words.findUnique({
+          where: {
+            word: attackWord,
+          },
+        })
+
+        if (wordExist) {
+          for (const key in rooms[roomCode].players) {
+            if (key !== socket.id) {
+              await updatePlayerLifePoints(key, attackWord.length)
+            }
+          }
+        } else {
+          await updatePlayerLifePoints(socket.id, 5)
+        }
+      } else {
+        await updatePlayerLifePoints(socket.id, 5)
+      }
+
+      const randomWord = generateRandomWord(wordFragments)
+
+      io.to(roomCode).emit('setCurrentWord', randomWord)
+      io.to(roomCode).emit('sendSocketId', socket.id)
+      io.to(roomCode).emit('dataPlayers', rooms[roomCode].players)
+    })
   })
+
 }
