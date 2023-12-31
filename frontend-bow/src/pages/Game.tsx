@@ -21,6 +21,7 @@ export function Game() {
     name: '',
     lifePoints: 300,
     attack: '',
+    defense: ''
   })
 
   const handleClickCreateRoom = () => {
@@ -49,7 +50,6 @@ export function Game() {
       name: formRoomData.username,
     }))
   }, [formRoomData.username])
-
 
   return (
     <main className="flex max-md:flex-col h-[710px] max-md:h-ful">

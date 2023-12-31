@@ -26,6 +26,7 @@ export function Header() {
     name: '',
     lifePoints: 300,
     attack: '',
+    defense: ''
   })
 
   const isRoom = window.location.pathname

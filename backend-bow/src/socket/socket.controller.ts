@@ -7,21 +7,23 @@ import { generateRandomWord } from '../utils/randomWord'
 
 interface Room {
   players: { [socketId: string]: Player }
+  lastLetter?: string
+
 }
 
 interface Player {
   name: string
   lifePoints: number
   attack: string
-}
-
-interface Rooms {
-  [key: string]: Room
+  defense: string
 }
 
 interface PlayerData {
   player1: Player
   player2: Player
+}
+interface Rooms {
+  [key: string]: Room
 }
 
 const rooms: Rooms = {}
@@ -32,6 +34,32 @@ export const gameController = async (io: Server): Promise<void> => {
 
   io.on('connection', async (socket) => {
     console.log('a user has connected')
+
+    const updatePlayerLifePoints = async (playerId: string, roomCode: string, points: number, currentWord: string, attackWord: string = '') => {
+      const { defense } = rooms[roomCode].players[playerId]
+
+      let damage: number = points !== 20
+        ? points > 8 ? Math.round(((points / 100) * 20)) * 2 : points * 2
+        : points
+
+      if (defense.includes(currentWord)) {
+        damage = Math.round(damage / 2)
+      }
+
+      const playerData = rooms[roomCode].players[playerId]
+      const newPlayerData = { ...playerData, lifePoints: playerData.lifePoints - damage, attack: attackWord }
+      rooms[roomCode].players[playerId] = newPlayerData
+
+      if (attackWord.startsWith(rooms[roomCode].lastLetter ?? '-')) {
+        const playerData = rooms[roomCode].players[socket.id]
+        const newPlayerData = { ...playerData, lifePoints: playerData.lifePoints + 5 }
+        rooms[roomCode].players[socket.id] = newPlayerData
+      }
+
+      if (attackWord) {
+        rooms[roomCode].lastLetter = attackWord.split('')[0]
+      }
+    }
 
     socket.on('createRoom', (roomCode: string, playerData: Player) => {
       rooms[roomCode] = { players: { [socket.id]: playerData } }
@@ -70,16 +98,12 @@ export const gameController = async (io: Server): Promise<void> => {
       io.to(roomCode).emit('wordWrite', playerData)
     })
 
+    socket.on('defenseWord', (roomCode: string, playerData: PlayerData) => {
+      io.to(roomCode).emit('wordWrite', playerData)
+    })
+
     socket.on('attack', async (roomCode: string, currentWord: string, attackWord: string) => {
       const wordFragmentExist = attackWord.includes(currentWord)
-      console.log(wordFragmentExist)
-
-
-      const updatePlayerLifePoints = async (playerId: string, points: number) => {
-        const playerData = rooms[roomCode].players[playerId]
-        const newPlayerData = { ...playerData, lifePoints: playerData.lifePoints - points }
-        rooms[roomCode].players[playerId] = newPlayerData
-      }
 
       if (wordFragmentExist) {
         const wordExist = await prisma.words.findUnique({
@@ -91,14 +115,15 @@ export const gameController = async (io: Server): Promise<void> => {
         if (wordExist) {
           for (const key in rooms[roomCode].players) {
             if (key !== socket.id) {
-              await updatePlayerLifePoints(key, attackWord.length)
+              await updatePlayerLifePoints(key, roomCode, attackWord.length, currentWord)
+              await updatePlayerLifePoints(socket.id, roomCode, 0, attackWord, currentWord)
             }
           }
         } else {
-          await updatePlayerLifePoints(socket.id, 5)
+          await updatePlayerLifePoints(socket.id, roomCode, 20, attackWord, currentWord)
         }
       } else {
-        await updatePlayerLifePoints(socket.id, 5)
+        await updatePlayerLifePoints(socket.id, roomCode, 20, attackWord, currentWord)
       }
 
       const randomWord = generateRandomWord(wordFragments)
@@ -106,6 +131,22 @@ export const gameController = async (io: Server): Promise<void> => {
       io.to(roomCode).emit('setCurrentWord', randomWord)
       io.to(roomCode).emit('sendSocketId', socket.id)
       io.to(roomCode).emit('dataPlayers', rooms[roomCode].players)
+    })
+
+    socket.on('defense', async (roomCode: string, currentWord: string, defenseWord: string) => {
+      const wordFragmentExist = defenseWord.includes(currentWord)
+
+      if (wordFragmentExist) {
+        const wordExist = await prisma.words.findUnique({
+          where: {
+            word: defenseWord,
+          },
+        })
+
+        if (wordExist) {
+          rooms[roomCode].players[socket.id].defense = defenseWord
+        }
+      }
     })
   })
 

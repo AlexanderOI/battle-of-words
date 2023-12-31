@@ -18,6 +18,7 @@ export type Player = {
   name: string
   lifePoints: number
   attack: string
+  defense: string
 }
 
 export type PayerData = {

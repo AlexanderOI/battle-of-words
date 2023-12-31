@@ -27,7 +27,7 @@ export function GameRoom() {
 
   socket.on('dataPlayers', (room: Room) => {
     let numPlayer = '1'
-    console.log(room)
+
     for (const clave in room) {
       if (room.hasOwnProperty(clave)) {
         setPlayerData(prev => ({
@@ -80,7 +80,7 @@ export function GameRoom() {
 
       {startGame &&
         <div className='absolute flex items-center justify-center top-56 bg-neutral-800 w-28 h-28 rounded-full'>
-          <span>{currentWord}</span>
+          <span className='text-2xl'>{currentWord}</span>
         </div>
       }
 
@@ -88,13 +88,13 @@ export function GameRoom() {
         <Player
           name={playerData.player1.name}
           lifePoints={playerData.player1.lifePoints}
-          word={playerData.player1.attack}
+          word={isPlayer1 ? playerData.player1.attack : playerData.player1.defense}
         />
 
         <Player
           name={playerData.player2.name}
           lifePoints={playerData.player2.lifePoints}
-          word={playerData.player2.attack}
+          word={isPlayer1 ? playerData.player2.attack : playerData.player2.defense}
         />
 
       </div>

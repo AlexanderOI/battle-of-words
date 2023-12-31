@@ -13,12 +13,14 @@ export const PlayerProvider = ({ children }: { children: ReactNode }) => {
     player1: {
       name: 'player_1',
       lifePoints: 300,
-      attack: ''
+      attack: '',
+      defense: ''
     },
     player2: {
       name: 'player_2',
       lifePoints: 300,
-      attack: ''
+      attack: '',
+      defense: ''
     }
   })
 

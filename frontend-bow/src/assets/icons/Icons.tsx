@@ -103,15 +103,15 @@ export function SendIcon() {
 
 export function PersonIcon() {
   return (
-    <svg className="flex fill-slate-400 mt-1 w-1/12 h-4" viewBox="0 0 12 12">
+    <svg className="flex fill-slate-400 mt-1 w-1/12 h-4" viewBox="0 0 12 12" >
       <path d="M6 1a2 2 0 1 0 0 4a2 2 0 0 0 0-4Zm2.5 5h-5A1.5 1.5 0 0 0 2 7.5c0 1.116.459 2.01 1.212 2.615C3.953 10.71 4.947 11 6 11c1.053 0 2.047-.29 2.788-.885C9.54 9.51 10 8.616 10 7.5A1.5 1.5 0 0 0 8.5 6Z" />
     </svg>
   )
 }
 
-export function FaceIcon() {
+export function FaceIcon({ color }: { color: string }) {
   return (
-    <svg width="60" height="60" viewBox="0 0 24 24">
+    <svg width="60" height="60" viewBox="0 0 24 24" style={{ color }}>
       <path fill="currentColor" d="M12 2C6.486 2 2 6.486 2 12s4.486 10 10 10s10-4.486 10-10S17.514 2 12 2zm0 18c-4.411 0-8-3.589-8-8c0-1.168.258-2.275.709-3.276c.154.09.308.182.456.276c.396.25.791.5 1.286.688c.494.187 1.088.312 1.879.312c.792 0 1.386-.125 1.881-.313s.891-.437 1.287-.687s.792-.5 1.287-.688c.494-.187 1.088-.312 1.88-.312s1.386.125 1.88.313c.495.187.891.437 1.287.687s.792.5 1.287.688c.178.067.374.122.581.171c.191.682.3 1.398.3 2.141c0 4.411-3.589 8-8 8z" />
       <circle cx="8.5" cy="12.5" r="1.5" fill="currentColor" />
       <circle cx="15.5" cy="12.5" r="1.5" fill="currentColor" />
@@ -134,6 +134,22 @@ export function ConfirmIcon() {
       <path fill="none" stroke="#0c4a6e" strokeDasharray="24" strokeDashoffset="24" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 11L11 17L21 7">
         <animate fill="freeze" attributeName="stroke-dashoffset" dur="0.4s" values="24;0" />
       </path>
+    </svg>
+  )
+}
+
+export function SwordIcon() {
+  return (
+    <svg className="mx-2" width="40" height="40" viewBox="0 0 24 24">
+      <path fill="currentColor" d="m7.048 13.406l3.535 3.536l-1.413 1.414l1.415 1.415l-1.414 1.414l-2.475-2.475l-2.829 2.829l-1.414-1.414l2.829-2.83l-2.475-2.474l1.414-1.414l1.414 1.413zM3 3l3.546.003l11.817 11.818l1.415-1.414l1.415 1.414l-2.475 2.475l2.828 2.829l-1.414 1.414l-2.829-2.829l-2.474 2.475l-1.415-1.414l1.414-1.415L3.002 6.531zm14.457 0L21 3.003l.002 3.523l-4.053 4.052l-3.536-3.535z" />
+    </svg>
+  )
+}
+
+export function ShieldIcon() {
+  return (
+    <svg className="mx-2" width="40" height="40" viewBox="0 0 24 24">
+      <path fill="currentColor" d="M3.783 2.826L12 1l8.217 1.826a1 1 0 0 1 .783.976v9.987a6 6 0 0 1-2.672 4.992L12 23l-6.328-4.219A6 6 0 0 1 3 13.79V3.802a1 1 0 0 1 .783-.976" />
     </svg>
   )
 }
